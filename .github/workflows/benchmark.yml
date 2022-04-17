@@ -1,0 +1,15 @@
+name: Go GC Benchmark
+on:
+  push:
+    branches:
+      - main
+jobs:
+  Run-Go-GC-Benchmark:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v2
+      - name: Exec script
+        run: bash benchmark.bash
+      - name: Preview result
+        run: cat result.log
