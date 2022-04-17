@@ -1,7 +1,7 @@
 #!/bin/bash -e
 _benchmark() {
   local result
-  result=$(docker run --rm -e GOBIN=/go -e GO111MODULE=off golang:$1 /bin/bash -c "go get golang.org/x/benchmarks/garbage && ./garbage -benchtime=30s" | grep "BenchmarkGarbage")
+  result=$(docker run --rm -e GOBIN=/go -e GO111MODULE=off golang:$1 /bin/bash -c "go get golang.org/x/benchmarks/garbage && ./garbage -benchmem=10000 -benchtime=30s" | grep "BenchmarkGarbage")
   echo $result >> $result.log
 }
 
